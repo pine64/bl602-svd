@@ -10,22 +10,14 @@ This SVD is being maintained primarily for automatic code and documentation gene
 Contributing to this project
 --------------------------
 
+Contributions welcome!
 In order to keep the SVD in a state that is acceptable for downstream use, there are some scripts to run conformance tests inside the scripts directory.  
 These scripts will be run via Continuous Integration before your pull request will be merged.
 
-Hardware
+Reference material
 --------
-- [Pine64 Documentation](https://pine64.github.io/bl602-docs)
+- [Pine64 Documentation](https://pine64.github.io/bl602-docs): Documentation maintained by the community
 - [Official Documents](https://github.com/bouffalolab/bl_docs): Includes detailed core and peripheral documentation
-- [BL602/604 Datasheet](mirrored/BL602_BL604_DS_1.6_en.pdf) (34 pages): Includes
-  pinout, memory map, and general peripheral descriptions but no detailed
-  functional specification or register listings.
-- [BL602/604 Reference Manual](mirrored/BL602_BL604_RM_1.2_en.pdf) (209 pages):
-  Includes register map, clock tree and other information about implementing
-  BL602/BL604.
-- [soc602_reg.svd][1]: Contains a seemingly-complete register listing, with
-  names but no descriptions, for the BL602.
-- [Hardware Notes](hardware_notes): Additional information
-  gathered from the SDK repository and elsewhere on the internet.
+- [soc602_reg.svd][1]: Upstream source for this SVD
 
 [1]: https://github.com/pine64/bl_iot_sdk/tree/master/components/bl602/bl602_std/bl602_std/Device/Bouffalo/BL602/Peripherals/soc602_reg.svd
