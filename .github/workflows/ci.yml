@@ -16,12 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Run checks on stable and nightly Rust
-        rust: [stable, nightly]
-
-        include:
-          # Run check with MSRV as well
-          - rust: 1.42.0
+        # Run checks on stable
+        rust: [stable]
 
     steps:
       - uses: actions/checkout@v2
@@ -33,13 +29,17 @@ jobs:
           override: true
           components: rustfmt
       - name: Put local binary directory into path
-        run: echo "~/.local/bin" >> $GITHUB_PATH
+        run: |
+          mkdir -p ~/.local/bin
+          echo "~/.local/bin" >> $GITHUB_PATH
       - name: Cache Cargo installed binaries
         uses: actions/cache@v1
         id: cache-cargo
         with:
           path: ~/cargo-bin
           key: ${{ runner.os }}-svd2rust-0.17.0
+      - name: Install xmllint
+        run: sudo apt-get install libxml2-utils
       - name: Install svd2rust
         if: steps.cache-cargo.outputs.cache-hit != 'true'
         uses: actions-rs/install@v0.1
@@ -72,7 +72,11 @@ jobs:
           popd
       - name: Build PAC
         run: ./scripts/regenerate-rust-code.sh soc602_reg.svd src
-      - name: Check PAC
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+      #- name: Check PAC
+      #  uses: actions-rs/cargo@v1
+      #  with:
+      #    command: check
+      - name: Check SVD conformance with svdconv
+        run: ./scripts/svdconv_wrapper.sh
+      - name: Check SVD XML/schema conformance with xmllint
+        run: ./scripts/xmllint_wrapper.sh
