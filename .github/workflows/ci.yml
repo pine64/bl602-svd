@@ -16,12 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Run checks on stable and nightly Rust
-        rust: [stable, nightly]
-
-        include:
-          # Run check with MSRV as well
-          - rust: 1.42.0
+        # Run checks on stable
+        rust: [stable]
 
     steps:
       - uses: actions/checkout@v2
@@ -76,10 +72,10 @@ jobs:
           popd
       - name: Build PAC
         run: ./scripts/regenerate-rust-code.sh soc602_reg.svd src
-      - name: Check PAC
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+      #- name: Check PAC
+      #  uses: actions-rs/cargo@v1
+      #  with:
+      #    command: check
       - name: Check SVD conformance with svdconv
         run: ./scripts/svdconv_wrapper.sh
       - name: Check SVD XML/schema conformance with xmllint
