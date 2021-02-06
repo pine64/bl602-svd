@@ -78,3 +78,5 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: check
+      - name: Check SVD conformance with svdconv
+        run: ./scripts/svdconv_wrapper.sh
