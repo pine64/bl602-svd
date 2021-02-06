@@ -8,14 +8,19 @@ This SVD is being maintained primarily for automatic code and documentation gene
 
 
 Contributing to this project
---------------------------
+----------------------------
 
 Contributions welcome!
 In order to keep the SVD in a state that is acceptable for downstream use, there are some scripts to run conformance tests inside the scripts directory.  
 These scripts will be run via Continuous Integration before your pull request will be merged.
 
+Downstream projects
+-------------------
+
+- [BL602-pac](https://github.com/sipeed/bl602-pac): Automatically generated Peripheral Access Crate using svd2rust. For users of the Rust Embedded ecosystem.
+
 Reference material
---------
+------------------
 - [Pine64 Documentation](https://pine64.github.io/bl602-docs): Documentation maintained by the community
 - [Official Documents](https://github.com/bouffalolab/bl_docs): Includes detailed core and peripheral documentation
 - [soc602_reg.svd][1]: Upstream source for this SVD
